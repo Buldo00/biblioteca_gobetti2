@@ -1,0 +1,267 @@
+PROMPT
+Devo sviluppare un modulo completo per una biblioteca scolastica da integrare in una piattaforma PHP già esistente.
+⚠️ VINCOLI IMPORTANTI
+NON modificare sistema login esistente.
+NON modificare grafica attuale.
+Integrare nel layout già presente.
+Struttura modulare e pulita.
+Codice commentato.
+Database MySQL.
+
+🎯 OBIETTIVO
+Creare un sistema di gestione biblioteca con:
+1️⃣ RUOLI UTENTE
+Livelli numerici:
+Studente (100)
+Docente (300)
+Bibliotecario (320)
+Tecnici (400)
+Collaboratori (500)
+Amministrativi (600)
+Dirigenti (900)
+Permessi basati sul livello.
+
+2️⃣ GESTIONE LIBRI
+CRUD completo libri con campi:
+titolo
+autore
+anno
+casa_editrice
+lingua
+genere
+codice_dewey
+collocazione
+isbn
+copertina
+trama
+Gestione tipologie differenti (riviste, dizionari, manuali).
+
+3️⃣ GESTIONE COPIE
+Ogni libro ha N copie.
+Tabella copie con:
+id
+id_libro
+numero_copia
+qr_code_univoco
+armadio
+ripiano
+stato
+note_danno
+Possibilità di aggiungere copie in qualsiasi momento.
+
+4️⃣ QR CODE + PDF
+Generazione QR univoco per ogni copia
+Generazione PDF etichetta con:
+“BIBLIOTECA GOBETTI”
+aula
+numero copia
+armadio
+ripiano
+codice dewey
+qr code
+Pulsante “Scarica etichetta PDF”.
+
+5️⃣ PRENOTAZIONI
+Studenti:
+Max 3 prenotazioni attive
+3 giorni per ritiro (configurabile)
+Annullabile
+Auto blacklist se non ritira X volte
+Docenti:
+Prenotazione per classe
+Associazione copie → studenti
+Prestito registrato al singolo studente
+
+6️⃣ RITIRO / RESTITUZIONE
+Doppia conferma (bibliotecario + utente)
+Supporto QR scan
+Supporto assegnazione manuale
+Log completo operazioni
+
+7️⃣ BLACKLIST
+Automatica
+Parametri configurabili
+Rimozione automatica al rientro libro
+
+8️⃣ AVVISAMI
+Bottone se libro non disponibile
+Email automatica con link prenotazione
+
+9️⃣ IMPOSTAZIONI ADMIN
+Tabella settings con valori modificabili:
+max_prestiti
+giorni_ritiro
+limite_blacklist
+orari_biblioteca
+limite_docente
+template_email
+
+🔟 RICERCA
+Ricerca con filtri multipli dinamici.
+
+1️⃣1️⃣ OPERAZIONI MASSIVE
+Multi selezione
+Assegnazioni multiple
+Riconsegne multiple
+
+Fornisci:
+Struttura database
+Relazioni
+API interne
+Logica backend
+Schema tabelle
+Esempi query
+Architettura consigliata
+Librerie consigliate per QR e PDF
+
+📚 Documento Descrittivo – Software Biblioteca Scolastica “Biblioteca Gobetti”
+1. Obiettivo del sistema
+La piattaforma ha lo scopo di gestire in modo completo la biblioteca scolastica, integrandosi in un sistema PHP già esistente, mantenendo login, grafica e struttura attuale.
+Il sistema dovrà permettere:
+Catalogazione dei libri
+Gestione delle copie fisiche
+Prenotazioni individuali e di classe
+Tracciamento prestiti
+Gestione blacklist
+Generazione QR code ed etichette
+Gestione amministrativa centralizzata
+
+2. Struttura utenti e livelli di accesso
+Il sistema prevede diversi livelli di utenza, identificati tramite un valore numerico:
+Studenti (100)
+Docenti (300)
+Bibliotecari (320)
+Tecnici (400)
+Collaboratori (500)
+Amministrativi (600)
+Dirigenti (900)
+Ogni livello avrà permessi specifici.
+Gli studenti potranno prenotare libri entro i limiti stabiliti.
+I docenti potranno effettuare prenotazioni anche per l’intera classe.
+I bibliotecari gestiranno libri, copie, prestiti e conferme.
+Gli amministratori potranno modificare tutte le impostazioni del sistema.
+
+3. Gestione e catalogazione dei libri
+Ogni libro inserito nel sistema dovrà contenere informazioni complete di catalogazione:
+Titolo
+Autore
+Anno di pubblicazione
+Casa editrice
+Lingua
+Genere
+Codice Dewey
+Collocazione
+ISBN
+Immagine di copertina
+Trama (facoltativa)
+Il sistema dovrà inoltre prevedere la gestione di tipologie differenti (come riviste, dizionari e manuali), con campi personalizzati a seconda della categoria.
+I bibliotecari potranno aggiungere, modificare o rimuovere libri in qualsiasi momento.
+
+4. Gestione delle copie fisiche
+Ogni libro può avere un numero variabile di copie fisiche.
+Ogni copia sarà tracciata singolarmente e avrà:
+Un numero progressivo (da 1 a N)
+Un QR code univoco
+Indicazione di armadio e ripiano
+Stato (disponibile, prenotato, in prestito, danneggiato, smarrito)
+Le copie potranno essere aggiunte anche successivamente, nel caso in cui la scuola acquisti nuovi esemplari.
+Questo sistema consente il tracciamento preciso delle copie, utile in caso di danneggiamento o smarrimento.
+
+5. Sistema di prenotazione
+Prenotazioni studente
+Gli studenti potranno:
+Avere massimo 3 prestiti attivi (valore modificabile)
+Prenotare un libro senza necessità di approvazione manuale
+Ritirare il libro entro 3 giorni (configurabile)
+Annullare la prenotazione
+Se uno studente prenota più volte senza ritirare, potrà essere inserito automaticamente in blacklist.
+
+Prenotazioni docente per classe
+I docenti potranno prenotare più copie per l’intera classe (10, 20, 30 o in base al numero studenti).
+Nel momento del ritiro:
+L’insegnante visualizzerà l’elenco degli studenti
+Potrà associare ogni copia a uno studente specifico
+Il prestito verrà registrato a carico del singolo studente
+Se la prenotazione è collegata a una classe, il limite massimo individuale non viene applicato o viene adeguato al numero della classe.
+
+6. Ritiro e riconsegna con doppia conferma
+Ogni operazione di ritiro o riconsegna richiede una doppia conferma:
+Conferma del bibliotecario
+Conferma dell’utente
+Il QR code applicato su ogni copia sarà utilizzato per:
+Confermare il ritiro di una prenotazione
+Assegnare un prestito anche senza prenotazione
+Nel caso in cui uno studente entri senza prenotazione:
+Il bibliotecario scannerizza il QR
+Seleziona lo studente da una lista
+Conferma l’assegnazione
+Tutte le operazioni devono essere registrate in un log.
+
+7. Sistema blacklist
+Un utente viene inserito in blacklist quando:
+Non restituisce il libro entro il tempo massimo previsto
+Prenota e non ritira per un numero configurabile di volte
+La rimozione dalla blacklist avviene automaticamente alla restituzione del libro.
+Tutti i parametri devono essere modificabili dagli amministratori.
+
+8. Sistema “Avvisami”
+Se un libro non è disponibile, l’utente potrà cliccare su “Avvisami”.
+Il sistema invierà automaticamente un’email quando il libro tornerà disponibile, contenente un link diretto alla prenotazione.
+
+9. Orari e calendario
+La biblioteca dovrà avere:
+Orari configurabili di ritiro
+Orari configurabili di riconsegna
+Calendario giorni attivi
+Il sistema impedirà prenotazioni o operazioni fuori orario.
+
+10. Sistema di ricerca
+Il catalogo dovrà prevedere filtri avanzati per:
+Titolo
+Autore
+Anno
+Genere
+Lingua
+Codice Dewey
+Disponibilità
+La ricerca deve essere semplice, veloce e combinabile.
+
+11. Etichette e QR Code
+Ogni copia deve avere un’etichetta stampabile in PDF contenente:
+Scritta “BIBLIOTECA GOBETTI”
+Titolo
+Numero copia
+Numero armadio
+Numero ripiano
+Codice Dewey
+QR Code
+Il QR deve essere integrato graficamente nell’etichetta.
+Deve essere presente un pulsante per generare e scaricare il PDF.
+
+12. Operazioni multiple
+Il sistema deve facilitare operazioni massive:
+Selezione multipla di libri
+Selezione multipla di utenti
+Ritiro multiplo
+Riconsegna multipla
+Inserimento copie multiple
+L’obiettivo è rendere il lavoro del bibliotecario rapido ed efficiente.
+
+13. Impostazioni amministrative
+Tutti i valori devono essere modificabili tramite pannello admin:
+Numero massimo prestiti
+Giorni per ritiro
+Parametri blacklist
+Limite docente
+Orari biblioteca
+Testi email
+
+14. Vincoli tecnici
+Il sistema deve:
+Essere sviluppato in PHP
+Integrarsi nella piattaforma esistente
+Non modificare login e grafica
+Utilizzare database MySQL
+Generare PDF
+Generare QR code univoci
+Gestire invio email automatiche
