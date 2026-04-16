@@ -1,0 +1,260 @@
+/* ============================================================
+   BIBLIOTECA GOBETTI – Foglio di stile personalizzato
+   ============================================================ */
+
+/* ── Variabili colore ────────────────────────────────────── */
+:root {
+    --bib-primary: #1a3a5c;
+    --bib-accent:  #e67e22;
+    --bib-light:   #f4f6f9;
+    --bib-card-hover: #e8f0fe;
+    --bib-radius: 0.5rem;
+}
+
+/* ── Generale ────────────────────────────────────────────── */
+body {
+    background-color: var(--bib-light);
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: #222;
+}
+
+#mainContent {
+    min-height: calc(100vh - 120px);
+}
+
+/* Sottile barra colorata sotto la navbar */
+.level-bar {
+    height: 4px;
+    border-radius: 2px;
+    opacity: 0.85;
+}
+
+/* ── Navbar ─────────────────────────────────────────────── */
+#mainNavbar {
+    box-shadow: 0 2px 8px rgba(0,0,0,.3);
+}
+
+#mainNavbar .navbar-brand span {
+    letter-spacing: 0.03em;
+}
+
+/* ── Schede libro (card catalogo) ───────────────────────── */
+.book-card {
+    border: 1px solid #dee2e6;
+    border-radius: var(--bib-radius);
+    transition: transform .2s ease, box-shadow .2s ease;
+    background: #fff;
+    height: 100%;
+    overflow: hidden;
+}
+
+.book-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+
+.book-card .book-cover {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+    background: #f0f0f0;
+}
+
+.book-card .book-cover-placeholder {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #1a3a5c 0%, #2d6a9f 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.8);
+    border-bottom: 1px solid #eee;
+}
+
+.book-card .book-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.book-card .book-author {
+    font-size: 0.82rem;
+    color: #666;
+}
+
+.book-card .book-meta {
+    font-size: 0.78rem;
+    color: #888;
+}
+
+/* Badge disponibilità */
+.availability-badge {
+    font-size: 0.72rem;
+    padding: 0.2em 0.55em;
+}
+
+/* ── Pagina dettaglio libro ─────────────────────────────── */
+.libro-cover-lg {
+    max-height: 380px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: var(--bib-radius);
+    box-shadow: 0 4px 16px rgba(0,0,0,.15);
+}
+
+/* ── Tabelle ────────────────────────────────────────────── */
+.table-biblioteca {
+    font-size: 0.88rem;
+}
+
+.table-biblioteca thead th {
+    background-color: var(--bib-primary);
+    color: #fff;
+    border-color: var(--bib-primary);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.table-biblioteca tbody tr:hover {
+    background-color: var(--bib-card-hover);
+}
+
+/* ── Form ricerca ───────────────────────────────────────── */
+.search-bar {
+    background: #fff;
+    border-radius: var(--bib-radius);
+    padding: 1rem 1.25rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    margin-bottom: 1.5rem;
+}
+
+/* ── Sezione admin ──────────────────────────────────────── */
+.admin-header {
+    background: linear-gradient(90deg, #721c24 0%, #b21f1f 100%);
+    color: #fff;
+    border-radius: var(--bib-radius);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.librarian-header {
+    background: linear-gradient(90deg, #7d5a00 0%, #c9830a 100%);
+    color: #fff;
+    border-radius: var(--bib-radius);
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+/* ── Card impostazioni ──────────────────────────────────── */
+.settings-card {
+    border-left: 4px solid var(--bib-accent);
+    border-radius: var(--bib-radius);
+    background: #fff;
+    padding: 1rem 1.25rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+.settings-card label {
+    font-weight: 500;
+    font-size: 0.88rem;
+    color: #444;
+}
+
+.settings-card small {
+    color: #888;
+}
+
+/* ── Etichetta QR (stampa) ──────────────────────────────── */
+.etichetta-container {
+    width: 90mm;
+    min-height: 60mm;
+    border: 2px solid #222;
+    border-radius: 4px;
+    padding: 6mm;
+    font-family: monospace;
+    font-size: 11pt;
+    background: #fff;
+    page-break-inside: avoid;
+    margin: 0 auto 8mm;
+}
+
+.etichetta-container .etichetta-title {
+    font-size: 13pt;
+    font-weight: 700;
+    border-bottom: 1px solid #555;
+    padding-bottom: 2mm;
+    margin-bottom: 3mm;
+    text-align: center;
+}
+
+.etichetta-container .etichetta-qr {
+    float: right;
+    margin-left: 4mm;
+}
+
+.etichetta-container .etichetta-qr img {
+    width: 22mm;
+    height: 22mm;
+}
+
+/* ── Blacklist ──────────────────────────────────────────── */
+.blacklist-row {
+    background-color: #fff3f3;
+}
+
+/* ── Stato prestito scaduto ─────────────────────────────── */
+.prestito-scaduto {
+    background-color: #fff3cd;
+}
+
+/* ── Footer ─────────────────────────────────────────────── */
+footer {
+    background: #1a1a2e;
+    color: #adb5bd;
+    padding: 1rem 0;
+    margin-top: 2rem;
+    font-size: 0.82rem;
+    text-align: center;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 576px) {
+    .book-card .book-cover,
+    .book-card .book-cover-placeholder {
+        height: 150px;
+    }
+
+    .etichetta-container {
+        width: 95%;
+    }
+}
+
+/* ── Stampa ─────────────────────────────────────────────── */
+@media print {
+    body * { visibility: hidden; }
+    #printArea, #printArea * { visibility: visible; }
+    #printArea { position: absolute; left: 0; top: 0; width: 100%; }
+    .no-print { display: none !important; }
+
+    .etichetta-container {
+        border: 2px solid #000 !important;
+        page-break-inside: avoid;
+    }
+}
+
+/* ── Animazioni ─────────────────────────────────────────── */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.book-card {
+    animation: fadeIn 0.25s ease both;
+}
