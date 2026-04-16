@@ -24,9 +24,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
         $errore = 'Token CSRF non valido.';
     } else {
         $idDel = (int)$_GET['delete'];
-        // Controlla se esistono copie o prenotazioni attive
-        $nCopie = (int)$pdo->prepare("SELECT COUNT(*) FROM bib_copie WHERE id_libro = ?")
-                           ->execute([$idDel]) ? $pdo->query("SELECT COUNT(*) FROM bib_copie WHERE id_libro = $idDel")->fetchColumn() : 0;
+        // Controlla se esistono copie registrate
         $stmtCheck = $pdo->prepare("SELECT COUNT(*) FROM bib_copie WHERE id_libro = ?");
         $stmtCheck->execute([$idDel]);
         $nCopie = (int)$stmtCheck->fetchColumn();
