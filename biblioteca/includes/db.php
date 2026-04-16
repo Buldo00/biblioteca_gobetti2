@@ -1,11 +1,16 @@
 <?php
 // ============================================================
-// CONFIGURAZIONE DATABASE - Modificare queste variabili!
+// CONFIGURAZIONE DATABASE
+// IMPORTANTE: Non inserire mai credenziali reali in questo file
+// se il codice è versionato. Utilizzare variabili d'ambiente
+// oppure creare un file db.local.php (escluso dal repo) e
+// includerlo al posto di questo.
 // ============================================================
-define('DB_HOST', 'localhost');
-define('DB_USER', 'YOUR_DB_USER');   // ← Modificare con l'utente del database
-define('DB_PASS', 'YOUR_DB_PASS');   // ← Modificare con la password del database
-define('DB_NAME', 'YOUR_DB_NAME');   // ← Modificare con il nome del database
+// Leggi da variabili d'ambiente, con fallback ai valori di default
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_USER', getenv('DB_USER') ?: 'YOUR_DB_USER');   // ← Impostare tramite variabile d'ambiente DB_USER
+define('DB_PASS', getenv('DB_PASS') ?: 'YOUR_DB_PASS');   // ← Impostare tramite variabile d'ambiente DB_PASS
+define('DB_NAME', getenv('DB_NAME') ?: 'YOUR_DB_NAME');   // ← Impostare tramite variabile d'ambiente DB_NAME
 
 // Connessione PDO al database
 try {

@@ -134,7 +134,7 @@ function aggiornaPrestitiScaduti(PDO $pdo): void
 /**
  * Restituisce il numero di copie disponibili per un libro.
  */
-function getCopieDiponibili(PDO $pdo, int $idLibro): int
+function getCopieDisponibili(PDO $pdo, int $idLibro): int
 {
     $stmt = $pdo->prepare(
         "SELECT COUNT(*) FROM bib_copie
