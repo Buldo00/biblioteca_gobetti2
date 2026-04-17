@@ -1,0 +1,162 @@
+﻿* mettere l’occhio per vedere password temporaneamente se si tiene cliccato 
+* non permettere il copia e incolla nella password
+* modificare css e html per renderlo esteticamente migliore
+* al posto di ‘aggiungi libro’ scrivere ‘aggiungi elemento’
+* bibliotecario quanto aggiungono un libro devono generare un ettichetta:
+elementi etichetta:
+1. numero di copia
+2. numero di armadio
+3. numero di ripiano
+4. codice dewey
+5. codice qr: il codice qr verrà scannerizzato tramite uno scanner in dotazione ai bibliotecari, il codice qr deve aprire la pagina di assegnazione se è libero, invece se è occupato la pagina di ritiro. invece se viene scannerizzato dai studenti o docenti deve apparire se il libro è disponibile oppure no e andare alla pagina di prestito libro 
+6. SCRITTA “BIBLIOTECA GOBETTI”
+* ci deve anche essere un opzione per generare un'etichetta già esistente nel caso si sia rovinata col tempo o per altri motivi (es. cambio di posizione di un libro)
+* un admin può avere tutti i prestiti che vuole, come un insegnante
+* pagina statistiche non funziona
+* pagina impostazioni non funziona
+* cambia colore in base al grado dell’utente
+* quando creo un utente, aggiungi la possibilità di inserire classe e sezione
+* il bibliotecario ha gli stessi privilegi di un admin
+* il docente ha come unico privilegio in più degli altri, la possibilità di fare un prestito di gruppo (per le proprie classi), dove, selezionata la classe, è possibile visualizzare gli studenti e tramite una spunta che si può mettere o togliere difianco al nome dello studente, è possibile selezionarlo, ovviamente ogni studente andrà a prendere una copia del libro e se le copie finiscono ovviamente non è possibile assegnarne altre.
+* nella navbar in alto la voce ‘classe’ da errore dicendo ‘the request url was not found on this server’. modificare l’errore
+* aggiungere la sezione “prenotazione di classe” che non esiste
+
+
+----------------------------------------------------- 
+
+
+* ti sei dimenticato la pagina di login, la hai rimossa a caso
+fai una cosa, ricrea direttamente il database e risolvi il problema che quando accedo al sito, non mi trova la pagina e massimo entra direttamente saltanto il login
+* 
+
+
+
+
+
+
+
+
+
+
+
+VERSIONE 2
+* se si è professore o admin o bibliotecario al posto della sezione ‘prenotazione di classe’. mettere la possibilità di prenotare per una singola persona o una classe tutto nella sezione ‘prestiti’. inoltre quando un professore seleziona una classe gli dovranno apparire tutti gli studenti appartenenti a quella classe e deve essere in grado di fare un flag sugli studenti a cui vuole assegnare il libro. però naturalmente non deve essere in grado di fare più flag di quante sono le copie disponibili. inoltre se l’insegnante assegna un libro a uno studente lo studente nella sua sezione vedrà il libro a lui assegnato
+* nella sezione prestiti nella parte check utente c’è scritto in attesa. ci deve essere la possibilità che un bibliotecario o un admin riescano a confermare quando un utente ritira il libro dal vivo.
+* nella sezione gestione libri: in genera etichette, migliora l'etichetta perché le scritte escono dal riquadro
+* ci sono dei casi in cui il numero di copie disponibili è -1/1 e questo non va bene. dovrebbe essere 0/1
+* quando un admin aggiunge uno studente deve essere in grado mettere classe (da 1 a 5) e sezione (a -> z). se l’utente da aggiungere non è uno studente allora la sezione e la classe non si devono vedere.
+* solo un admin può gestire gli utenti, un bibliotecario no
+
+
+
+
+VERSIONE 3
+* se io creo un nuovo libro, se devo generare la sua etichetta, nell'etichetta ci deve essere solo: numero di copia
+numero di armadio
+numero di ripiano
+codice dewey
+numero aula(l’ho aggiunto ora perché devo sapere anche l’aula in cui è posizionato)
+codice qr
+SCRITTA “BIBLIOTECA GOBETTI”
+non cose tipo titolo o autore
+* togli la sezione prenotazione classe nel footer dato che la gestisci in gestione prestiti
+* in gestione prestiti: quando voglio prenotare un libro per la classe, quando seleziono la classe che voglio, c’è un bug che mi fa ritornare al tipo di prestito personale. quindi di conseguenza non riesco a controllare se hai gestito bene gli alunni di ogni classe, i flag ecc
+* metti tutte le pagine (quindi tutto il sito) responsive che deve essere bello ed usabile sia da telefono che da tablet. ti consiglio di mettere il menù hamburger, però decidi te
+* quando prenoto un libro, il numero di copie di quel libro non diminuisce. fai in modo che diminuisca
+* l’admin e il bibliotecario possono fare prestiti infiniti, mentre gli altri utenti solo 3, però lo devi controllare perché non lo controlli
+* fai una sezione dove sono presenti tutti gli utenti in blacklist, solo per admin e bibliotecario
+* anche il bibliotecario deve poter entrare in gestione utenti
+* un utente non può mettere se stesso, un bibliotecario e un admin in blacklist
+* aggiungi più esempi di utenti base, docenti e bibliotecari
+
+
+versione 4
+* quando creo un libro non richiedere due volte isbn
+* non mi fa selezionare gli studenti delle classi
+* la roba dei prestiti non l’hai risolta: 
+gli studenti hanno solo 3 prestiti disponibili.
+i docenti hanno 3 prestiti disponibili, quando fa la prenotazione di classe, lo studente che verrà selezionato, gli verrà tolto un prestito disponibile.
+i bibliotecari e gli admin hanno prestiti disponibili infiniti.
+* hai dimenticato il fatto che un bibliotecario e un admin non possono essere messi in blacklist
+* metti menù hamburger nell’header per la gestione dei telefoni al posto di lasciare header in questo modo
+
+
+versione 5
+* il bibliotecario e l’admin non possono essere messi in blacklist
+* lo studente può prendere al massimo tre libri dalla biblioteca, ciò vuol dire che non può effettuare più di 3 prestiti. Questa cosa la devi mettere a posto
+
+
+versione 6
+
+
+questo sito deve essere un’implementazione di un sito già esistente.
+il database allegato è il database del sito già esistente dove ci sono tutti gli utenti.
+tu ora dovrai integrare il database allegato aggiungendo le tabelle del database della biblioteca.
+avendo già gestito l’accesso degli utenti nel sito già esistente tu non dovrai più gestire l’accesso.
+il livello invece lo vedrai nel database nuovo.
+Livelli utente
+* Studenti → livello 100
+* Docenti → livello 300
+* Bibliotecario → livello 320
+* Tecnici → livello 400
+* Collaboratori → livello 500
+* Amministrativi → livello 600
+* Dirigenti → livello 900
+Permessi principali
+Funzione
+	Studente
+	Docente
+	Bibliotecario
+	Admin
+	Prenotazione libro
+	✅
+	✅
+	✅
+	✅
+	Prenotazione per classe
+	❌
+	✅
+	✅
+	✅
+	Ritiro libro
+	✅
+	✅
+	✅
+	✅
+	Gestione libri
+	❌
+	❌
+	✅
+	✅
+	Gestione copie
+	❌
+	❌
+	✅
+	✅
+	Stampa QR/etichette
+	❌
+	❌
+	✅
+	✅
+	Modifica impostazioni
+	❌
+	❌
+	❌
+	✅
+	Gestione blacklist
+	❌
+	❌
+	✅
+	✅
+	
+
+I Tecnici, Collaboratori E Amministrativi a livello di permessi contali come uno bibliotecario
+l’admin ha livello 999
+
+
+—------------------
+problemi usciti dalla prima consegna:
+* deway e isbn
+* togliere collacazione
+* cambiare etichetta
+* modifica impostazioni di ritiro
