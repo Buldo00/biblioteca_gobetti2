@@ -4,7 +4,14 @@
 - PHP 8+ disponibile da terminale
 - MySQL o MariaDB attivo in locale
 
-## 2) Crea il database
+## 2) Clona il repository (se non l'hai già fatto)
+
+```bash
+git clone https://github.com/Buldo00/biblioteca_gobetti2.git
+cd biblioteca_gobetti2
+```
+
+## 3) Crea il database
 Apri MySQL e crea il database richiesto dal progetto:
 
 ```sql
@@ -13,20 +20,20 @@ CREATE DATABASE IF NOT EXISTS vr5av337_gobettiservicesprova
   COLLATE utf8mb4_unicode_ci;
 ```
 
-## 3) Importa i dump SQL
-Da terminale:
+## 4) Importa i dump SQL
+Da terminale, nella cartella radice del progetto:
 
 ```bash
-mysql -u root -p vr5av337_gobettiservicesprova < /home/runner/work/biblioteca_gobetti2/biblioteca_gobetti2/database.sql
-mysql -u root -p vr5av337_gobettiservicesprova < /home/runner/work/biblioteca_gobetti2/biblioteca_gobetti2/biblioteca/database_biblioteca.sql
+mysql -u root -p vr5av337_gobettiservicesprova < database.sql
+mysql -u root -p vr5av337_gobettiservicesprova < biblioteca/database_biblioteca.sql
 ```
 
 > Il primo dump importa il database esistente, il secondo aggiunge le tabelle della biblioteca (`bib_*`).
 
-## 4) Verifica credenziali DB del progetto
+## 5) Verifica credenziali DB del progetto
 File usato dalla connessione:
 
-`/home/runner/work/biblioteca_gobetti2/biblioteca_gobetti2/biblioteca/includes/db.php`
+`biblioteca/includes/db.php`
 
 Default locali:
 - host: `localhost`
@@ -42,20 +49,20 @@ export DB_PASS='tua_password'
 export DB_NAME='vr5av337_gobettiservicesprova'
 ```
 
-## 5) Avvia il server PHP
+## 6) Avvia il server PHP
+Dalla cartella radice del progetto:
 
 ```bash
-cd /home/runner/work/biblioteca_gobetti2/biblioteca_gobetti2
 php -S 127.0.0.1:8000
 ```
 
-## 6) Apri l'app nel browser
+## 7) Apri l'app nel browser
 
 Vai su:
 
 `http://127.0.0.1:8000/biblioteca/index.php`
 
-## 7) Verifica rapida
+## 8) Verifica rapida
 - Se la pagina si apre, il test locale è OK.
 - Se compare errore DB:
   - controlla che MySQL sia acceso
